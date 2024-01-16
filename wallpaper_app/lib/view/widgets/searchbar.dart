@@ -1,8 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../screens/searchscreen.dart';
+
 class CustomSearchBar extends StatelessWidget {
-  const CustomSearchBar({super.key});
+
+  CustomSearchBar({super.key});
+
+  TextEditingController _searchController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +22,7 @@ class CustomSearchBar extends StatelessWidget {
         children: [
           Expanded(
             child: TextField(
+              controller: _searchController,
               decoration: InputDecoration(
                 hintText: "Search Wallpaper",
                 hintStyle: TextStyle(color: Colors.black26),
@@ -30,7 +36,9 @@ class CustomSearchBar extends StatelessWidget {
             ),
           ),
           InkWell(
-            onTap: (){ print("Searching...");},
+            onTap: (){ 
+              Navigator.push(context, MaterialPageRoute(builder: (context) => SearchScreen(query:_searchController.text)));
+            },
               child: Icon(Icons.search))
         ],
       ),

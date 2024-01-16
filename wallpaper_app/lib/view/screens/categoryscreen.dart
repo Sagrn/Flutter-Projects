@@ -2,12 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:wallpaper_app/view/widgets/categoryblock.dart';
 import 'package:wallpaper_app/view/widgets/customappbar.dart';
 
-import '../widgets/searchbar.dart';
+import '../../control/apicontroller.dart';
+import '../../model/photomodel.dart';
 
-class CategoryScreen extends StatelessWidget {
-  const CategoryScreen({super.key});
+
+class CategoryScreen extends StatefulWidget {
+
+ const CategoryScreen({super.key});
+
 
   @override
+  State<CategoryScreen> createState() => _CategoryScreenState();
+}
+
+class _CategoryScreenState extends State<CategoryScreen> {
+
+
+
+
+  @override
+
   Widget build(BuildContext context) {
     return Scaffold(
       // backgroundColor: Colors.black12,
@@ -22,35 +36,35 @@ class CategoryScreen extends StatelessWidget {
         child: Column(
           children: [
 
-            Padding(
-              padding: const EdgeInsets.all(4.0),
-              child: Stack(
-                children : [ Image.network(
-                  "https://images.pexels.com/photos/1784578/pexels-photo-1784578.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-                  height: 150,
-                  width: MediaQuery.of(context).size.width,
-                  fit: BoxFit.cover,
-                ),
-                  Container(
-                    height: 150,
-                    width: MediaQuery.of(context).size.width,
-                    color: Colors.black26,
-                  ),
-                  Positioned(
-                    top: 40,
-                    left: 130,
-                    child: Column(
-                      children: [
-                        Text("Category",style: TextStyle(fontSize: 15,color: Colors.white,fontWeight: FontWeight.w300),),
-                        Text("Oceans",style: TextStyle(fontSize: 28,color: Colors.white,fontWeight: FontWeight.w500),),
-
-                      ],
-                    ),
-                  )
-
-                ]
-              ),
-            ),
+            // Padding(
+            //   padding: const EdgeInsets.all(4.0),
+            //   child: Stack(
+            //     children : [ Image.network(
+            //       "https://images.pexels.com/photos/1784578/pexels-photo-1784578.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            //       height: 150,
+            //       width: MediaQuery.of(context).size.width,
+            //       fit: BoxFit.cover,
+            //     ),
+            //       Container(
+            //         height: 150,
+            //         width: MediaQuery.of(context).size.width,
+            //         color: Colors.black26,
+            //       ),
+            //       Positioned(
+            //         top: 40,
+            //         left: 130,
+            //         child: Column(
+            //           children: [
+            //             Text("Category",style: TextStyle(fontSize: 15,color: Colors.white,fontWeight: FontWeight.w300),),
+            //             Text("Oceans",style: TextStyle(fontSize: 28,color: Colors.white,fontWeight: FontWeight.w500),),
+            //
+            //           ],
+            //         ),
+            //       )
+            //
+            //     ]
+            //   ),
+            // ),
             SizedBox(height: 10,),
             //-----------------Search Bar-------------------------
 
@@ -68,14 +82,14 @@ class CategoryScreen extends StatelessWidget {
                       mainAxisSpacing: 3,
                       mainAxisExtent: 400
                   ),
-                  itemCount: 10,
+                  itemCount: 5,
                   itemBuilder: ((context,index) => Container(
                     height: 800,
                     width: 100,
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(10),
                       child: Image.network(
-                        "https://images.pexels.com/photos/1366913/pexels-photo-1366913.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                        "hhtp",
                         height: 800,
                         width: 100,
                         fit: BoxFit.cover,
