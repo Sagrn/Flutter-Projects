@@ -29,7 +29,7 @@ class _ProductDeatilpageState extends State<ProductDeatilpage> {
             style: Theme.of(context).textTheme.titleLarge,
           ),
           const Spacer(),
-          Image.asset(widget.product['imageUrl'] as String),
+          Image.asset(widget.product['imageUrl'] as String, height: 250),
           const Spacer(flex: 2),
           Container(
             height: 250,

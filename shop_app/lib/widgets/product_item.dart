@@ -28,6 +28,9 @@ class _ProductListState extends State<ProductList> {
       borderSide: BorderSide(color: Color.fromRGBO(225, 225, 225, 1)),
       borderRadius: BorderRadius.horizontal(left: Radius.circular(50)),
     );
+
+    final size = MediaQuery.of(context).size.width;
+
     return SafeArea(
       child: Column(
         children: [
@@ -93,31 +96,84 @@ class _ProductListState extends State<ProductList> {
             ),
           ),
           Expanded(
-            child: ListView.builder(
-                itemCount: products.length,
-                itemBuilder: (context, index) {
-                  final product = products[index];
-                  return GestureDetector(
-                    onTap: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) {
-                            return ProductDeatilpage(product: product);
-                          },
+            child: (size >= 1080)
+                ? GridView.builder(
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        childAspectRatio: 2, crossAxisCount: 2),
+                    itemCount: products.length,
+                    itemBuilder: (context, index) {
+                      final product = products[index];
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return ProductDeatilpage(product: product);
+                              },
+                            ),
+                          );
+                        },
+                        child: ProductCard(
+                          title: product['title'],
+                          price: product['price'] as double,
+                          image: product['imageUrl'] as String,
+                          backgroundColor: index.isEven
+                              ? const Color.fromRGBO(216, 240, 253, 1)
+                              : const Color.fromRGBO(245, 247, 249, 1),
                         ),
                       );
-                    },
-                    child: ProductCard(
-                      title: product['title'],
-                      price: product['price'] as double,
-                      image: product['imageUrl'] as String,
-                      backgroundColor: index.isEven
-                          ? const Color.fromRGBO(216, 240, 253, 1)
-                          : const Color.fromRGBO(245, 247, 249, 1),
-                    ),
-                  );
-                }),
-          )
+                    })
+                : ListView.builder(
+                    itemCount: products.length,
+                    itemBuilder: (context, index) {
+                      final product = products[index];
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return ProductDeatilpage(product: product);
+                              },
+                            ),
+                          );
+                        },
+                        child: ProductCard(
+                          title: product['title'],
+                          price: product['price'] as double,
+                          image: product['imageUrl'] as String,
+                          backgroundColor: index.isEven
+                              ? const Color.fromRGBO(216, 240, 253, 1)
+                              : const Color.fromRGBO(245, 247, 249, 1),
+                        ),
+                      );
+                    }),
+          ),
+          // Expanded(
+          //   child: ListView.builder(
+          //       itemCount: products.length,
+          //       itemBuilder: (context, index) {
+          //         final product = products[index];
+          //         return GestureDetector(
+          //           onTap: () {
+          //             Navigator.of(context).push(
+          //               MaterialPageRoute(
+          //                 builder: (context) {
+          //                   return ProductDeatilpage(product: product);
+          //                 },
+          //               ),
+          //             );
+          //           },
+          //           child: ProductCard(
+          //             title: product['title'],
+          //             price: product['price'] as double,
+          //             image: product['imageUrl'] as String,
+          //             backgroundColor: index.isEven
+          //                 ? const Color.fromRGBO(216, 240, 253, 1)
+          //                 : const Color.fromRGBO(245, 247, 249, 1),
+          //           ),
+          //         );
+          //       }),
+          // )
         ],
       ),
     );
